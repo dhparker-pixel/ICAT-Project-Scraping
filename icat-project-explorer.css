@@ -1,0 +1,249 @@
+/* ICAT Project Explorer v4 — scoped to its component, Ensemble-friendly.
+   VT maroon is reserved for interactive emphasis, with accessible contrast.
+*/
+.icat-projects {
+  --icat-project-accent: #861f41;
+  --icat-project-line: #d8d8d8;
+  --icat-project-soft: #f6f6f7;
+  --icat-project-ink: #202124;
+  color: var(--icat-project-ink);
+  max-width: 100%;
+}
+.icat-projects, .icat-projects * { box-sizing: border-box; }
+.icat-projects__intro { margin-bottom: 1.25rem; }
+.icat-projects__intro h2 { margin: 0 0 .4rem; }
+.icat-projects__intro p { margin: 0; }
+.icat-projects__toolbar {
+  background: var(--icat-project-soft);
+  border: 1px solid var(--icat-project-line);
+  border-radius: .55rem;
+  padding: clamp(.9rem, 2.5vw, 1.5rem);
+  margin-bottom: 1rem;
+}
+.icat-projects label:not(.icat-projects__check) {
+  display: block;
+  font-weight: 650;
+  font-size: .91rem;
+  margin: 0 0 .4rem;
+}
+.icat-projects select, .icat-projects input[type="search"] {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 2.75rem;
+  border: 1px solid #777;
+  border-radius: .3rem;
+  padding: .55rem .7rem;
+  font: inherit;
+  background: #fff;
+  color: #222;
+}
+.icat-projects input[type="search"] { padding-right: 2.2rem; }
+.icat-projects input:focus-visible,
+.icat-projects select:focus-visible,
+.icat-projects summary:focus-visible,
+.icat-projects button:focus-visible,
+.icat-projects a:focus-visible,
+.icat-projects__check:focus-within {
+  outline: 3px solid var(--icat-project-accent);
+  outline-offset: 2px;
+}
+.icat-projects__search { max-width: 48rem; margin-bottom: 1.1rem; }
+.icat-projects__suggest-wrap { position: relative; }
+.icat-projects__suggestions {
+  position: absolute;
+  z-index: 15;
+  left: 0;
+  right: 0;
+  top: calc(100% + .25rem);
+  max-height: min(19rem, 60vh);
+  overflow-y: auto;
+  margin: 0;
+  padding: .25rem;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: .4rem;
+  box-shadow: 0 .3rem 1.2rem rgb(0 0 0 / .12);
+}
+.icat-projects__suggestions[hidden] { display: none; }
+.icat-projects__suggestions [role="option"] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  column-gap: .75rem;
+  cursor: pointer;
+  padding: .5rem .65rem;
+  border-radius: .2rem;
+  line-height: 1.3;
+}
+.icat-projects__suggestions [role="option"][aria-selected="true"],
+.icat-projects__suggestions [role="option"]:hover { background: #f4eaf0; }
+.icat-projects__suggestions small { color: #555; font-size: .77rem; }
+
+/* The summary is hidden at desktop sizes; filters are always expanded there. */
+.icat-projects__advanced-toggle { display: none; }
+.icat-projects__advanced-inner { padding: 0; }
+.icat-projects__filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.15rem;
+  align-items: start;
+}
+.icat-projects__field { min-width: 0; margin: 0; }
+.icat-projects__fieldset { border: 0; padding: 0; }
+.icat-projects__fieldset legend {
+  font-weight: 650;
+  font-size: .91rem;
+  padding: 0;
+  margin: 0 0 .4rem;
+  width: 100%;
+}
+.icat-projects__checks { display: flex; flex-wrap: wrap; align-items: flex-start; gap: .45rem; }
+.icat-projects .icat-projects__check {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  min-height: 2.25rem;
+  border: 1px solid #b2b2b2;
+  border-radius: .32rem;
+  background: #fff;
+  padding: .36rem .62rem;
+  font-size: .85rem;
+  font-weight: 450;
+  line-height: 1.35;
+  cursor: pointer;
+  transition: background-color .12s ease, border-color .12s ease;
+}
+.icat-projects__check:hover { border-color: var(--icat-project-accent); }
+.icat-projects .icat-projects__check.is-selected {
+  background: #f5eaf0;
+  border-color: var(--icat-project-accent);
+}
+.icat-projects__check input[type="checkbox"] {
+  flex: none;
+  margin: 0;
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--icat-project-accent);
+  cursor: pointer;
+}
+.icat-projects__check span { overflow-wrap: anywhere; }
+.icat-projects__hint { font-size: .8rem; color: #555; line-height: 1.45; margin: -.05rem 0 .45rem; }
+.icat-projects__controls { display: flex; align-items: center; gap: 1rem; margin-top: 1.1rem; }
+.icat-projects button { font: inherit; cursor: pointer; min-height: 2.6rem; }
+#icat-project-reset {
+  background: #fff;
+  color: var(--icat-project-accent);
+  border: 1px solid var(--icat-project-accent);
+  border-radius: .3rem;
+  padding: .45rem 1rem;
+}
+#icat-project-reset:hover { background: #f4eaf0; }
+.icat-projects__count { margin: 0 0 1rem; font-size: .91rem; color: #515151; }
+.icat-projects__results { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem; }
+.icat-projects__card { background: #fff; border: 1px solid var(--icat-project-line); border-radius: .5rem; padding: 1.2rem; min-width: 0; overflow-wrap: anywhere; }
+.icat-projects__card h3 { font-size: clamp(1.05rem, 1.3vw, 1.25rem); line-height: 1.33; margin: .45rem 0 .65rem; }
+.icat-projects__card h3 a { color: var(--icat-project-accent); text-decoration: underline; text-underline-offset: .18em; }
+.icat-projects__card h3 a:hover { text-decoration-thickness: 2px; }
+.icat-projects__metadata { display: flex; flex-wrap: wrap; gap: .4rem; font-size: .82rem; }
+.icat-projects__metadata span { background: #f3edf0; color: #4b1930; border-radius: .25rem; padding: .23rem .55rem; }
+.icat-projects__desc { font-size: .94rem; line-height: 1.55; margin: .3rem 0 .7rem; }
+.icat-projects__detail { font-size: .87rem; line-height: 1.5; margin: .35rem 0 0; }
+.icat-projects__detail strong { font-weight: 700; }
+.icat-projects__empty { grid-column: 1 / -1; padding: 1.4rem; border: 1px dashed var(--icat-project-line); border-radius: .5rem; }
+.icat-projects__more {
+  display: block;
+  margin: 1.25rem auto;
+  background: var(--icat-project-accent);
+  color: #fff;
+  border: 2px solid var(--icat-project-accent);
+  border-radius: .3rem;
+  padding: .55rem 1.25rem;
+  font-weight: 700;
+}
+.icat-projects__more[hidden] { display: none; }
+.icat-projects__more:hover { background: #621630; }
+
+/* A restrained "Easter egg" of metadata beneath the project results. */
+.icat-projects__stats {
+  margin-top: 1.7rem;
+  padding: 1.05rem 0 0;
+  border-top: 1px solid var(--icat-project-line);
+  color: #555;
+  font-size: .85rem;
+}
+.icat-projects__stats[hidden] { display: none; }
+.icat-projects__stats-heading { display: flex; gap: .65rem; align-items: baseline; justify-content: space-between; margin-bottom: .95rem; }
+.icat-projects__stats-heading h3 {
+  font-size: .9rem;
+  font-weight: 680;
+  letter-spacing: .03em;
+  color: #3f3f3f;
+  margin: 0;
+}
+.icat-projects__stats-heading span { text-transform: uppercase; letter-spacing: .1em; font-size: .67rem; color: #666; }
+.icat-projects__stats-grid {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .85rem;
+}
+.icat-projects__stat { min-width: 0; padding-left: .65rem; border-left: 2px solid #dfd2d8; }
+.icat-projects__stat dt { font-size: .76rem; color: #5b5b5b; line-height: 1.4; }
+.icat-projects__stat dd { margin: .12rem 0 0; font-size: 1.05rem; color: #353535; font-weight: 680; font-variant-numeric: tabular-nums; }
+.icat-projects__stats-breakdown { margin: 1rem 0 .25rem; line-height: 1.65; font-size: .78rem; overflow-wrap: anywhere; }
+.icat-projects__stats-note { margin: .25rem 0 0; line-height: 1.5; color: #666; font-size: .74rem; }
+.icat-projects__error { border-left: 4px solid #b42318; padding: .8rem; background: #fff6f4; }
+.icat-projects__error[hidden] { display: none; }
+.icat-projects__sr-only { position: absolute !important; width: 1px !important; height: 1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; }
+
+@media (max-width: 900px) {
+  .icat-projects__stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 850px) {
+  .icat-projects__filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767px) {
+  .icat-projects__search { margin-bottom: .8rem; }
+  .icat-projects__advanced-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    padding: .72rem .12rem .2rem;
+    font-size: .91rem;
+    font-weight: 650;
+    color: var(--icat-project-accent);
+    cursor: pointer;
+  }
+  .icat-projects__advanced-toggle::-webkit-details-marker { display: none; }
+  .icat-projects__chevron {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    width: .65rem;
+    height: .65rem;
+    transform: translateY(-.18rem) rotate(45deg);
+    transition: transform .15s ease;
+  }
+  .icat-projects__advanced[open] .icat-projects__chevron { transform: translateY(.13rem) rotate(225deg); }
+  .icat-projects__advanced-inner { padding-top: 1.1rem; }
+  .icat-projects__filter-count { font-size: .8rem; color: #555; font-weight: 450; }
+}
+@media (max-width: 610px) {
+  .icat-projects__filters, .icat-projects__results { grid-template-columns: minmax(0, 1fr); }
+  .icat-projects__stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .icat-projects__card { padding: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .icat-projects__chevron, .icat-projects__check { transition: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .icat-projects__suggestions { animation: icat-suggest-in .12s ease-out both; }
+  @keyframes icat-suggest-in {
+    from { opacity: 0; transform: translateY(-3px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}

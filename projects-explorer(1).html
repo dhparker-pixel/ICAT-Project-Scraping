@@ -1,0 +1,90 @@
+<!-- ICAT Project Explorer v4 — markup for an approved Ensemble HTML component. -->
+<!-- Load the matching v4 icat-project-explorer.css and icat-project-explorer.js as external assets. -->
+<section id="icat-project-explorer" class="icat-projects"
+         data-json="/content/dam/icat_vt_edu/projects.json"
+         aria-labelledby="icat-project-heading">
+  <div class="icat-projects__intro">
+    <h2 id="icat-project-heading">Explore supported research</h2>
+    <p>Search ICAT projects by topic, people, year, or college and department.</p>
+  </div>
+
+  <div class="icat-projects__toolbar">
+    <div class="icat-projects__search" role="search">
+      <label for="icat-project-query">Search projects</label>
+      <div class="icat-projects__suggest-wrap">
+        <input id="icat-project-query" type="search" autocomplete="off" spellcheck="false"
+               placeholder="Search projects, people, or topics…"
+               role="combobox" aria-autocomplete="list" aria-haspopup="listbox"
+               aria-expanded="false" aria-controls="icat-project-suggestions"
+               aria-describedby="icat-project-search-help" />
+        <ul id="icat-project-suggestions" class="icat-projects__suggestions"
+            role="listbox" hidden></ul>
+      </div>
+      <p id="icat-project-search-help" class="icat-projects__sr-only">Suggestions appear as you type. Use arrow keys to explore suggestions, Enter to choose one, or Escape to close the list.</p>
+    </div>
+
+    <!-- Native details stays OPEN on desktop; JavaScript closes it by default on mobile. -->
+    <details id="icat-project-advanced" class="icat-projects__advanced" open>
+      <summary class="icat-projects__advanced-toggle">
+        <span>Filters and sorting <span id="icat-project-active-filters" class="icat-projects__filter-count"></span></span>
+        <span class="icat-projects__chevron" aria-hidden="true"></span>
+      </summary>
+      <div class="icat-projects__advanced-inner">
+        <div class="icat-projects__filters">
+          <div class="icat-projects__field">
+            <label for="icat-filter-year">Funding year</label>
+            <select id="icat-filter-year"><option value="">All years</option></select>
+          </div>
+
+          <div class="icat-projects__field">
+            <label for="icat-filter-unit">College / department / center</label>
+            <select id="icat-filter-unit"><option value="">All units</option></select>
+          </div>
+
+          <fieldset class="icat-projects__field icat-projects__fieldset">
+            <legend>Project category</legend>
+            <div id="icat-filter-grant" class="icat-projects__checks" aria-label="Project categories"></div>
+          </fieldset>
+
+          <div class="icat-projects__field">
+            <label for="icat-filter-person">Researcher / collaborator</label>
+            <select id="icat-filter-person"><option value="">All people</option></select>
+          </div>
+
+          <div class="icat-projects__field">
+            <label for="icat-filter-topic">Research topic</label>
+            <select id="icat-filter-topic"><option value="">All topics</option></select>
+          </div>
+
+          <fieldset class="icat-projects__field icat-projects__fieldset">
+            <legend>Sort projects</legend>
+            <p class="icat-projects__hint">Choose one. By default, newest projects appear first.</p>
+            <div id="icat-filter-sort" class="icat-projects__checks"></div>
+          </fieldset>
+        </div>
+        <div class="icat-projects__controls">
+          <button id="icat-project-reset" type="button">Clear filters</button>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <p id="icat-project-count" class="icat-projects__count" role="status"
+     aria-live="polite" aria-atomic="true">Loading projects…</p>
+  <div id="icat-project-results" class="icat-projects__results" aria-label="Project results"></div>
+  <button id="icat-project-more" class="icat-projects__more" type="button" hidden>Show more projects</button>
+
+  <!-- Quiet, data-driven footer: based on all matching records, not only visible cards. -->
+  <section id="icat-project-stats" class="icat-projects__stats"
+           aria-labelledby="icat-project-stats-heading" hidden>
+    <div class="icat-projects__stats-heading">
+      <h3 id="icat-project-stats-heading">A closer look</h3>
+      <span>By the numbers</span>
+    </div>
+    <dl id="icat-project-stats-values" class="icat-projects__stats-grid"></dl>
+    <p id="icat-project-stats-categories" class="icat-projects__stats-breakdown"></p>
+    <p class="icat-projects__stats-note">Based on the matching projects and their published metadata. Untagged information is not inferred.</p>
+  </section>
+
+  <p id="icat-project-error" class="icat-projects__error" role="alert" hidden></p>
+</section>
